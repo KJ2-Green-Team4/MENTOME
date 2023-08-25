@@ -50,6 +50,12 @@
     align-self: flex-end;
 }
 
+.HeaderImg {
+    width: 9rem;
+    height: auto;
+    align-self: flex-end;
+}
+
 @media screen and (max-width: 887px) {
     .header {
         padding: 1rem 0.5rem; /* 작은 화면에선 좀 더 적은 padding 적용 */

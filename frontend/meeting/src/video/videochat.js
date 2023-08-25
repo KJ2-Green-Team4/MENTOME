@@ -10,7 +10,7 @@ call.hidden = true;
 let myStream;
 let muted = false;
 let cameraOff = false;
-let roomName = document.getElementById('roomName');
+const roomName = document.cookie.split('; ').find(row => row.startsWith('roomName=')).split('=')[1];
 let myPeerConnection;
 let myDataChannel;
 
@@ -108,13 +108,9 @@ async function initCall() {
     makeConnection();
 }
 
-async function handleWelcomeSubmit(event) {
-    event.preventDefault();
-    // const input = welcomeForm.querySelector('input');
+async function handleWelcomeSubmit() {
     await initCall();
     socket.emit('join_room', roomName);
-    // roomName = input.value;
-    // input.value = '';
 
     // 모달 창 닫기 로직 추가
     const modal = document.getElementById('modal');
@@ -134,7 +130,15 @@ socket.on('welcome', async () => {
     myPeerConnection.setLocalDescription(offer);
     console.log('sent the offer');
     socket.emit('offer', offer, roomName);
+
+    // 상대방이 입장할 때 효과음 재생
+    handleUserEnter();
 });
+
+// socket.on('user_exitToClient', () => {
+//     // 상대방이 퇴장 효과음 재생
+//     playExitSound();
+// });
 
 // Firefox
 socket.on('offer', async (offer) => {

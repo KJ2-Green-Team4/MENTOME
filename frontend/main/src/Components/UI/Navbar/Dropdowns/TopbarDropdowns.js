@@ -15,9 +15,9 @@ function TopbarDropdown() {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-                <Dropdown.Item href="mypage">마이 페이지</Dropdown.Item>
+                {/* <Dropdown.Item href="mypage">마이 페이지</Dropdown.Item>
                 <Dropdown.Item href="http://localhost:5000/meeting">멘토링 신청하기</Dropdown.Item>
-                <Dropdown.Item href="account-setting">설정</Dropdown.Item>
+                <Dropdown.Item href="account-setting">설정</Dropdown.Item> */}
                 <Dropdown.Item href="/" onClick={handleLogout}>
                     로그아웃
                 </Dropdown.Item>

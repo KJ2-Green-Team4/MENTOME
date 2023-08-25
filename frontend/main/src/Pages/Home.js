@@ -3,7 +3,8 @@
 import React from 'react';
 import Header from '../Components/Home/Header/Header';
 import RegisterGuide from '../Components/Home/RegisterGuide/RegisterGuide';
-import MentoringWrappers from '../Components/Home/MentoringWrappers/Main/MentoringWrapper';
+import MainMenteeCard from '../Components/Home/MentoringWrappers/Main/MainMenteeCard';
+import MainMentorCard from '../Components/Home/MentoringWrappers/Main/MainMentorCard';
 import { Container, Row } from 'react-bootstrap';
 
 import IntroTitle from '../Components/UI/IntroTitle/IntroTitle';
@@ -19,13 +20,13 @@ function Home() {
                     <IntroTitle name="멘토" url="mentor" />
                     <Row>
                         {/* <PostCard /> */}
-                        <MentoringWrappers />
+                        <MainMentorCard />
                     </Row>
                 </Container>
                 <Container>
                     <IntroTitle name="멘티" url="mentee" />
                     <Row>
-                        <MentoringWrappers />
+                        <MainMenteeCard />
                     </Row>
                 </Container>
             </div>

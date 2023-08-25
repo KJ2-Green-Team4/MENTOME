@@ -36,8 +36,15 @@ const postSchema = new Schema({
             commentContent: { type: String, required: true },
             commentWriter: { type: String, required: true },
             commentDate: { type: Date, required: true },
-        },
-    ],
+            commentReplies: [
+                {
+                    replyContent: { type: String, required: true },
+                    replyWriter: { type: String, required: true },
+                    replyDate: { type: Date, required: true }
+                }
+            ]
+        }
+    ]
 });
 
 module.exports = mongoose.model('Post', postSchema);

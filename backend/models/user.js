@@ -27,10 +27,11 @@ const userSchema = new Schema({
         type: Number,
         required: true
     },
-    notice: [
+    notices: [
         {
             noticeType: { type: String, required: true },
             noticeSender: { type: String, required: true },
+            noticeDate: { type: Date, required: true},
             roomName: { type: String }
         }
     ]

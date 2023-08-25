@@ -23,7 +23,8 @@
     display: flex;
     -webkit-box-pack: end;
     justify-content: flex-end;
-    margin-bottom: -1.25rem;
+    margin-bottom: -1.6rem;
+    font-size: 1.2rem;
 }
 
 .head_button button {
@@ -43,7 +44,7 @@
 .profile_bar {
     -webkit-box-align: center;
     align-items: center;
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: #495057;
     display: flex;
     -webkit-box-pack: justify;
@@ -66,7 +67,8 @@
 
 .body__head {
     width: 100%;
-    margin: 5rem auto 0px;
+    margin: 3rem auto 0px;
+    font-size: 1.6rem;
 }
 
 .body__wrapper {
@@ -187,7 +189,7 @@
 }
 
 .comment__Content_top {
-    font-size: 1.125rem;
+    font-size: 1.3rem;
     color: #212529;
     transition: color 0.125s ease-in 0s;
     line-height: 1.7;
@@ -196,7 +198,7 @@
     overflow-wrap: break-word;
 }
 
-p {
+.comment__Content_top p {
     display: block;
     margin-block-start: 1em;
     margin-block-end: 1em;
@@ -269,3 +271,9 @@ p {
 }
 
 /* post body */
+
+/* Custom Dropdown */
+
+.dropdown_toggle::after {
+    display: none;
+}

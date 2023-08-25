@@ -1,0 +1,647 @@
+/** footer - 기본 position setting  */
+
+.footer-position-head {
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+}
+
+.footer-color-head {
+    background-color: rgb(32, 33, 36);
+    color: rgb(232, 234, 237);
+    color: #fff;
+}
+
+.footer-unknown-size {
+    height: 5.5rem;
+    width: 100vw;
+}
+
+.footer-layout {
+    align-items: center;
+    background-color: transparent;
+    box-sizing: border-box;
+    color: var(--hotlane-on-background-color);
+    display: flex;
+    margin-bottom: 0;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.footer-color-setting {
+    --hotlane-background-color: rgb(32, 33, 36);
+    --hotlane-on-background-color: rgb(232, 234, 237);
+    --hotlane-on-surface-color: rgb(232, 234, 237);
+    --hotlane-on-surface-variant-color: rgb(154, 160, 166);
+    --hotlane-primary-color: rgb(138, 180, 248);
+    --hotlane-custom-background-color: #434649;
+    --hotlane-theme-background-color: #000;
+    --hotlane-error-color: rgb(242, 139, 130);
+    --hotlane-off-color: #eb5144;
+}
+.footer-left-layout-header {
+    justify-content: flex-start;
+    margin-left: 0.75rem;
+    max-width: 100%;
+    overflow: visible;
+    text-align: start;
+    text-overflow: ellipsis;
+}
+
+/* 왼쪽 , 가운데 , 오른쪽 layout 공통셋 */
+.footer-left-layout-header,
+.footer-right-layout-header,
+.footer-mid-layout-header {
+    align-items: center;
+    display: flex;
+    flex: 1 1 25%;
+}
+
+.footer-mid-layout-header {
+    justify-content: center;
+}
+
+.footer-mid-layout-body {
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 16px;
+    padding: 0 6px;
+    z-index: 999;
+    /* min-width: 200px; Adjust the minimum width as needed */
+}
+
+.mic-button {
+    position: relative;
+    z-index: 1;
+
+    width: 50px;
+    height: 50px;
+    background-color: var(--hotlane-custom-background-color);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.535);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    fill: #fff;
+}
+
+.mic-button:hover {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.535);
+}
+.mic-button.false {
+    fill: #fff;
+    background-color: #eb5144;
+}
+
+/* Camera Button */
+
+/* .fswXR */
+.footer-mid-layout-button-header {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* .VlW4Pb 미적용 */
+/* .j7Qpp, .VlW4Pb */
+.footer-mid-layout-button-body {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+}
+
+.footer-mid-layout-button-detail {
+    display: inline-block;
+    position: relative;
+}
+
+.camera-button {
+    position: relative;
+    z-index: 1;
+
+    width: 50px;
+    height: 50px;
+    background-color: var(--hotlane-custom-background-color);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.535);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    fill: #fff;
+}
+
+.camera-button:hover {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.535);
+}
+.camera-button.false {
+    fill: #fff;
+    background-color: #eb5144;
+}
+
+/* 그림판 */
+.canvas-pen-button {
+    position: relative;
+    z-index: 1;
+
+    width: 50px;
+    height: 50px;
+    background-color: var(--hotlane-custom-background-color);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.535);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    fill: #fff;
+}
+
+.canvas-pen-button:hover {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.535);
+}
+.canvas-pen-button.false {
+    fill: #202124;
+    background-color: #8eb6f7;
+}
+
+.impactTimeReset {
+    position: relative;
+    z-index: 1;
+
+    width: 50px;
+    height: 50px;
+    background-color: var(--hotlane-custom-background-color);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.535);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    fill: #fff;
+}
+
+.impactTimeReset:hover {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.535);
+}
+
+.impactTimeReset.false {
+    fill: #fff;
+    background-color: #eb5144;
+}
+
+/* 채팅 토글 제목 버튼 */
+/* #ToggleChat {
+    border: 1px solid #000;
+    border-radius: 0px 10px 0px 0px;
+    background: #fff;
+    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 373px;
+    height: 34px;
+    flex-shrink: 0;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 2px;
+} */
+
+/* 동영상 모달 오버레이, 리사이즈 - 비디오 컨테이너 */
+
+.video-container {
+    width: 640px; /* Initial width */
+    height: 360px; /* Initial height */
+    border: 1px solid #000000;
+    pointer-events: none; /* Allow interactions to pass through the video to the underlying elements */
+    position: absolute;
+}
+
+.video-container2 {
+    width: 640px; /* Initial width */
+    height: 360px; /* Initial height */
+    border: 1px solid #000000;
+    pointer-events: none; /* Allow interactions to pass through the video to the underlying elements */
+    position: absolute;
+}
+
+.canvas-wrapper,
+.video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.canvas-wrapper2,
+.video-wrapper2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.canvas-wrapper canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow interactions to pass through the video to the underlying elements */
+    object-fit: contain; /* This will maintain the aspect ratio and fit the canvas inside the container */
+}
+
+.canvas-wrapper2 canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow interactions to pass through the video to the underlying elements */
+    object-fit: contain; /* This will maintain the aspect ratio and fit the canvas inside the container */
+}
+
+video {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto; /* Allow video to receive mouse events */
+    z-index: 1; /* Ensure the canvas is above the video */
+}
+
+.resizer {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 1px solid #000;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+    pointer-events: auto; /* Allow video to receive mouse events */
+}
+
+.resizer2 {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 1px solid #000;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+    pointer-events: auto; /* Allow video to receive mouse events */
+}
+
+#drawcanvas {
+    position: absolute;
+    border: 2px solid black;
+    /* Add a border to the drawcanvas */
+    z-index: 500;
+}
+
+/* 동영상 */
+#uploadedFile {
+    z-index: 500;
+}
+
+#uploadedFile video {
+    display: none;
+}
+
+#uploadedFile2 {
+    z-index: 500;
+}
+
+#uploadedFile2 video {
+    display: none;
+}
+
+#call {
+    top: 0px;
+    /* position: absolute; */
+    z-index: 500;
+}
+
+.parent-container {
+    z-index: 300;
+    width: 40%;
+    height: 40%;
+}
+
+.mystream-center {
+    z-index: 5000;
+    display: flex;
+    justify-content: center;
+    /* 가로 중앙 정렬 */
+    align-items: center;
+    /* 세로 중앙 정렬 */
+    /* height: 100vh; 화면 높이를 기준으로 중앙 정렬 */
+}
+
+/* 동영상 */
+#myFace,
+#peerFace {
+    width: 250px;
+    height: 140px;
+    /* width: 0px; */
+    /* height: 0px; */
+    flex-shrink: 0;
+    border-radius: 15px 15px 15px 15px;
+    border: 1px solid #000;
+    background: #d9d9d9;
+}
+
+/* #exit {
+    border: #000;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    margin-left: 5px;
+} */
+
+/* Toolbar */
+
+#toggleFooter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2001;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background: #fff;
+    width: 60px;
+    height: 60px;
+}
+
+/* 그림판 툴바 */
+#canvas-tools-wrapper {
+    width: 42px;
+    height: calc(100% - 117px - (--sab));
+    position: absolute;
+    left: 0;
+    top: 85px;
+    overflow: overlay;
+    z-index: 777;
+    padding-top: 5px;
+    background: #232527;
+    text-align: center;
+    -webkit-user-select: none;
+    user-select: none;
+    opacity: 0;
+    visibility: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.38s opacity ease-out;
+}
+
+/* #canvas-tools-inner-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 42px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+} */
+
+/* footer - right icon */
+.footer-right-layout-header {
+    justify-content: flex-end;
+    margin-right: 0.75rem;
+}
+
+.footer-right-layout-body {
+    align-items: center;
+    display: flex;
+}
+
+.footer-right-chat-button-head {
+    position: relative;
+}
+
+/* exit */
+
+.exit-button {
+    position: relative;
+    z-index: 1;
+
+    width: 60px;
+    height: 50px;
+    background-color: var(--hotlane-off-color);
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.535);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    fill: #fff;
+}
+
+.exit-button:hover {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.535);
+}
+.exit-button.false {
+    fill: #202124;
+    background-color: #8eb6f7;
+}
+
+/* Add Skeleton */
+.toggleAddSkeletonbutton {
+    position: relative;
+    z-index: 1;
+
+    width: 50px;
+    height: 50px;
+    background-color: var(--hotlane-custom-background-color);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.535);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    fill: #fff;
+}
+
+.toggleAddSkeletonbutton:hover {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.535);
+}
+.toggleAddSkeletonbutton.false {
+    fill: #202124;
+    background-color: #8eb6f7;
+}
+
+/* toggleImpactTimebutton */
+
+.toggleImpactTimebutton {
+    position: relative;
+    z-index: 1;
+
+    width: 50px;
+    height: 50px;
+    background-color: var(--hotlane-custom-background-color);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.535);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    fill: #fff;
+}
+
+.toggleImpactTimebutton:hover {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.535);
+}
+.toggleImpactTimebutton.false {
+    fill: #202124;
+    background-color: #8eb6f7;
+}
+
+/* Upload */
+.toggleUploadbutton {
+    position: relative;
+    z-index: 1;
+
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* box-shadow: 0 2px 3px rgba(0, 0, 0, 0.535); */
+    /* transition: background-color 0.3s ease, box-shadow 0.3s ease; */
+    fill: #000000;
+}
+
+/* .toggleUploadbutton:hover {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.535);
+} */
+/* .toggleUploadbutton.false {
+    fill: #202124;
+    background-color: #8eb6f7;
+} */
+
+#skeleton-dropdown-content {
+    display: none;
+    position: absolute;
+    padding: 1px;
+    z-index: 1;
+    bottom: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    /* 드롭다운 박스가 버튼 위로 올라오도록 설정합니다. */
+}
+
+#skeleton-dropdown-content button {
+    display: block;
+    padding: 8px;
+    margin: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+/* #skeleton-dropdown-content button:hover {
+    background-color: #f1f1f1;
+} */
+
+#impact-dropdown-content {
+    display: none;
+    position: absolute;
+    padding: 1px;
+    z-index: 1;
+    bottom: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    /* 드롭다운 박스가 버튼 위로 올라오도록 설정합니다. */
+}
+
+#impact-dropdown-content button {
+    display: block;
+    padding: 8px;
+    margin: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+#impact-dropdown-content button:hover {
+    background-color: #f1f1f1;
+}
+
+#upload-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff91;
+    color: black;
+    border-radius: 25px;
+    backdrop-filter: blur(3px);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 10px 30px 10px;
+    z-index: 1;
+    bottom: 140%; /* 버튼의 전체 높이와 5픽셀만큼 위에 표시됩니다. */
+    left: 30%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#upload-dropdown-content button {
+    display: block;
+    padding: 8px 30px;
+    text-decoration: none;
+    color: #333;
+}
+
+#upload-dropdown-content button:hover {
+    background-color: #f1f1f1;
+}
+
+#canvas-tools-wrapper {
+    position: absolute;
+    top: 50%; /* 수직 중앙 정렬을 위해 top 값을 50%로 설정합니다. */
+    left: 10px; /* 왼쪽 사이드에서 10px만큼 떨어지도록 설정합니다. */
+    transform: translateY(-50%); /* 수직 중앙 정렬을 적용합니다. */
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#canvas-tools-inner-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#color {
+    width: 100%;
+}
+
+#line-width {
+    width: 100%;
+}
+
+.button-pointer {
+    cursor: url('../../assets/pencil_big.cur'), auto;
+}

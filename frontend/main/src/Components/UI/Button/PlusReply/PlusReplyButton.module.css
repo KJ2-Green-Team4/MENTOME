@@ -1,0 +1,12 @@
+.Reply__button_body {
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    color: #05d183;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.Reply__button_body svg {
+    margin-right: 0.5rem;
+}

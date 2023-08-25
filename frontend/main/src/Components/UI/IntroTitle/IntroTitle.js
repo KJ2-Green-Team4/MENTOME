@@ -8,6 +8,7 @@ const IntroTitle = ({ name, url }) => {
             <div className={styles.intro__title}>
                 {name}
                 <Link to={url}>
+                    {/* eslint-disable-next-line */}
                     <a className={styles.intro__title_link} type="external">
                         {name} 더보기
                         <ArrowIcon width={16} height={16} />

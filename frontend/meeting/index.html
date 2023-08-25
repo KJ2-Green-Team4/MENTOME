@@ -1,150 +1,495 @@
 <!--home.html-->
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>멘토미</title>
+        <!-- <link rel="stylesheet" href="https://unpkg.com/mvp.css" /> -->
+        <link rel="stylesheet" href="./src/css/style.css" />
+        <link rel="stylesheet" href="./src/css/footer.css" />
+        <link rel="stylesheet" href="./src/css/font.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <style></style>
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>멘토미</title>
-    <!-- <link rel="stylesheet" href="https://unpkg.com/mvp.css" /> -->
-    <link rel="stylesheet" href="./src/css/style.css" />
-
-    <style>
-        /* canvas 선 추가 */
-        #drawcanvas {
-            position: absolute;
-            border: 2px solid black;
-            /* Add a border to the drawcanvas */
-        }
-    </style>
-</head>
-
-<body>
-    <!-- main과 footer를 감싸는 div :: position 조정 -->
-    <div class="page-container">
-        <main>
-            <!-- 입장 완료 -->
-            <div id="modal" class="modal">
-                <div class="modal-content">
-                    <span class="hideme-close" id="closeModalBtn">&times;</span>
-                    <div id="welcome">
-                        <form>
-                            <input id="roomName" placeholder="room name" required type="text" />
-                            <button id="buttonToCloseModal">Enter room</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!-- 채팅 완료 -->
-            <div id="room">
-                <h3></h3>
-                <input id="ToggleChat" type="button" value="Chat" onclick="handleToggleChat()">
-                <div id="chat-info">
-                    <p id="info"></p>
-                    <div id="SendMessage-Container">
-                        <form id="msg">
-                            <input id="SendMessage" required type="text" />
-                            <button id="Send-Btn"></button>
-                        </form>
-                    </div>
-                    <form id="name">
-                        <input placeholder="nickname" required type="text" />
-                        <button>Save</button>
-                    </form>
-                </div>
-            </div>
-            <!-- 비디오 업로드 -->
-            <div id="uploadedFile">
-                <canvas id="canvas" width="30%" height="30%" style="position: absolute; max-width: 60%"></canvas>
-                <video id="fileDisplay" controls loop style="max-width: 60%" crossorigin="anonymous"></video>
-            </div>
-            <div id="uploadedFile2">
-                <canvas id="canvas2" width="30%" height="30%" style="position: absolute; max-width: 60%"></canvas>
-                <video id="fileDisplay2" controls loop style="max-width: 60%" crossorigin="anonymous"></video>
-            </div>
-
-            <!-- 그림판 완료 -->
-            <canvas id="drawcanvas" class="canvas" width="3000" height="3000" controls style="display: none"></canvas>
-            <div id="call">
-                <div id="myStream">
-                    <video id="myFace" autoplay playsinline></video>
-                    <video id="peerFace" autoplay playsinline></video>
-                </div>
-            </div>
-        </main>
-        <footer class="footer">
-            <div class="foot__inner">
-                <!-- control -->
-                <div id="control" style="display: flex">
-                    <!-- mic mute button -->
-                    <!-- <div class="footer-button__wrapper"> -->
-                    <!-- <button id="mute" type="button" class="footer-button-base__button"> -->
-                    <!-- svg -->
-                    <!-- <span class="footer-button-base__button-label">Mute</span> -->
-                    <!-- </button> -->
-                    <!-- </div> -->
-                    <!-- camera button -->
-                    <!-- <div class="footer-button__wrapper"> -->
-                    <!-- <button id="camera" type="button" class="footer-button-base__button"> -->
-                    <!-- svg -->
-                    <!-- <span class="footer-button-base__button-label">비디오 시작</span> -->
-                    <!-- </button> -->
-                    <!-- </div> -->
-                    <div>
-                        <button id="toggleDrawCanvasButton">Toggle Draw Canvas</button>
-                        <p>
-                            <button id="clearCanvasButton">Erase</button>
-                        </p>
-                        <form id="fileUpload" style="display: none">
-                            <input type="file" id="selectedFile" required />
-                            <p>
-                                <button type="submit">Upload</button>
-                            </p>
-                        </form>
-                        <form id="fileUpload2" style="display: none">
-                            <input type="file" id="selectedFile2" required />
-                            <p>
-                                <button type="submit">Upload2</button>
-                            </p>
-                        </form>
-                        <div>
-                            <button id="addSkeletonButton">Add Skeleton</button>
-                            <p>
-                                <button id="addSkeletonButton2">Add Skeleton2</button>
-                            </p>
+    <body>
+        <!-- main과 footer를 감싸는 div :: position 조정 -->
+        <div class="page-container">
+            <main>
+                <select id="cameras" class="custom-select" style="display: none">
+                    camera
+                </select>
+                <!-- 입장 완료 -->
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                        <span class="hideme-close" id="closeModalBtn">&times;</span>
+                        <div id="welcome">
+                            <form>
+                                <!-- <input id="roomName" placeholder="room name" required type="text" />
+                                <button id="buttonToCloseModal">Enter room</button> -->
+                                <p>Error!</p>
+                            </form>
                         </div>
-                        <div id="controls">
-                            <select id="cameras" class="custom-select"></select>
-                            <P>
-                                <button id="mute"></button>
-                                <button id="camera" class="camera-btn"></button>
-                            </P>
-                        </div>
-                        <button id="exit"></button>
                     </div>
                 </div>
-            </div>
-        </footer>
-    </div>
 
-    <!-- 자바스크립트 -->
-    <!-- <script src="/cover.js"></script> -->
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.1/camera_utils.js"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.js"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.2/drawing_utils.js"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.2/pose.js" crossorigin="anonymous"></script>
-    <script src="./src/video/videochat.js"></script>
-    <script src="./src/chat/chat.js"></script>
-    <script src="./src/skeleton-image/pose.js"></script>
-    <script src="./src/video/videosync.js"></script>
-    <script src="./src/fileupload/fileupload.js"></script>
-    <script src="./src/whiteboard/whiteboard.js"></script>
-</body>
+                <!-- 상대방 입,퇴장 효과음 -->
+                <audio id="enterSound" src="./assets/In.mp3"></audio>
+                <audio id="exitSound" src="./assets/Out.mp3"></audio>
 
+                <!-- 유사도 -->
+                <div class="alert" id="similarityAlert">
+                    유사도 전체 분석 비율: <span class="full-body-similarity"></span>%
+                    <br />
+                    상체: <span class="upper-body-similarity"></span>% | 하체:
+                    <span class="lower-body-similarity"></span>%
+                </div>
+
+                <!-- 비디오 업로드 -->
+                <div id="uploadedFile" class="video-container">
+                    <canvas id="canvas" style="position: absolute" width="100%" height="100%"></canvas>
+                    <video id="fileDisplay" controls loop crossorigin="anonymous"></video>
+                    <div class="resizer"></div>
+                    <div class="loading-spinner" id="loadingSpinner">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+                <div id="uploadedFile2" class="video-container2">
+                    <canvas id="canvas2" style="position: absolute" width="100%" height="100%"></canvas>
+                    <video id="fileDisplay2" controls loop crossorigin="anonymous"></video>
+                    <div class="resizer2"></div>
+                    <div class="loading-spinner" id="loadingSpinner2">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+
+                <!-- 그림판 완료 -->
+                <canvas
+                    id="drawcanvas"
+                    class="canvas"
+                    width="3000"
+                    height="3000"
+                    controls
+                    style="display: none"
+                ></canvas>
+                <!-- 그림판 툴즈 바 -->
+                <!-- 임시보관 : reference : https://paint.sumo.app/?lang=ko -->
+                <div id="canvas-tools-wrapper" style="justify-content: flex-start; opacity: 1; display: none">
+                    <!-- guide -->
+                    <div id="canvas-tools-inner-wrapper">
+                        <button id="clearCanvasButton">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                                <path
+                                    d="M690-240h190v80H610l80-80Zm-500 80-85-85q-23-23-23.5-57t22.5-58l440-456q23-24 56.5-24t56.5 23l199 199q23 23 23 57t-23 57L520-160H190Zm296-80 314-322-198-198-442 456 64 64h262Zm-6-240Z"
+                                />
+                            </svg>
+                        </button>
+                        <input id="color" type="color" />
+                        <input id="line-width" type="range" min="1" max="10" value="5" step="0.5" />
+                    </div>
+                </div>
+                <!-- 김현수 수정 2개의 웹캠 리사이즈 -->
+                <div id="call">
+                    <div id="myStream">
+                        <div class="webcam-wrapper">
+                            <video id="myFace" autoplay playsinline muted></video>
+                            <video id="peerFace" autoplay playsinline></video>
+                        </div>
+                        <div class="resizer-webcam"></div>
+                    </div>
+                </div>
+                <select id="cameras" class="custom-select" style="display: none">
+                    camera
+                </select>
+                <div id="room">
+                    <!-- <h3></h3> -->
+                    <div class="chat">
+                        <div id="chat-info">
+                            <div id="info">
+                                <div class="msg-tab">
+                                    <p></p>
+                                </div>
+                                <!-- <div id="SendMessage-Container"></div> -->
+                                <form id="name">
+                                    <input placeholder="nickname" required type="text" />
+                                    <button>Save</button>
+                                </form>
+                            </div>
+                            <form id="msg">
+                                <input id="SendMessage" required type="text" placeholder="Type your message here" />
+                                <!-- <button id="Send-Btn"></button> -->
+                            </form>
+                        </div>
+                        <!-- class="VfPpkd-Bz112c-LgbsSe yHy1rc eT1oJ JsuyRc boDUxc" -->
+                    </div>
+                </div>
+            </main>
+            <!-- Toolbar -->
+            <footer>
+                <div class="footer-position-head">
+                    <div class="footer-color-head footer-unknown-size footer-layout footer-color-setting">
+                        <!-- 왼쪽 Layout  -->
+                        <div class="footer-left-layout-header">
+                            <!-- upload button -->
+                            <div class="footer-mid-layout-button-body">
+                                <div class="footer-mid-layout-button-detail">
+                                    <span>
+                                        <!-- onclick="toggleCanvasPen()" -->
+                                        <button id="upload-dropdown-button" class="toggleUploadbutton">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                height="48"
+                                                viewBox="0 -960 960 960"
+                                                width="48"
+                                            >
+                                                <path
+                                                    d="M457.308-323.385v-368.693l-110.384 110-32.614-32.23L480-779.999l165.69 165.691-32.614 32.23-110.384-110v368.693h-45.384ZM237.694-180.001q-23.529 0-40.611-17.082-17.082-17.082-17.082-40.611V-363h45.384v125.306q0 4.616 3.846 8.463 3.847 3.846 8.463 3.846h484.612q4.616 0 8.463-3.846 3.846-3.847 3.846-8.463V-363h45.384v125.306q0 23.529-17.082 40.611-17.082 17.082-40.611 17.082H237.694Z"
+                                                />
+                                            </svg>
+                                        </button>
+                                        <div id="upload-dropdown-content">
+                                            <form id="fileUpload" style="display: block">
+                                                <input type="file" id="selectedFile" required />
+                                            </form>
+                                            <!-- 파일 업로드 2 -->
+                                            <form id="fileUpload2" style="display: block">
+                                                <input type="file" id="selectedFile2" required />
+                                            </form>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 생략 -->
+                        <!-- 가운데 Layout -->
+                        <div class="footer-mid-layout-header">
+                            <div class="footer-mid-layout-body">
+                                <!-- 마이크 버튼 -->
+                                <div class="footer-mid-layout-button-header">
+                                    <div class="footer-mid-layout-button-body">
+                                        <!-- icon detail -->
+                                        <div class="footer-mid-layout-button-detail">
+                                            <button
+                                                class="mic-button"
+                                                id="mute"
+                                                onclick="toggleMic()"
+                                                data-tooltip="tooltip-mic"
+                                            >
+                                                <svg focusable="false" width="20" height="20" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"
+                                                    ></path>
+                                                    <path
+                                                        d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"
+                                                    ></path>
+                                                </svg>
+                                                <span class="tooltiptext">마이크</span>
+                                                <!-- <div class="tooltip">
+                                                            <p>마이크</p>
+                                                        </div> -->
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 카메라 버튼 -->
+                                <div class="footer-mid-layout-button-header">
+                                    <div class="footer-mid-layout-button-body">
+                                        <div class="footer-mid-layout-button-detail">
+                                            <span>
+                                                <button class="camera-button" id="camera" onclick="toggleCamera()">
+                                                    <svg
+                                                        focusable="false"
+                                                        width="20"
+                                                        height="20"
+                                                        viewBox="0 0 24 24"
+                                                        class="Hdh4hc cIGbvc NMm5M"
+                                                    >
+                                                        <path
+                                                            d="M18 10.48V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4.48l4 3.98v-11l-4 3.98zm-2-.79V18H4V6h12v3.69z"
+                                                        ></path>
+                                                    </svg>
+                                                    <span class="tooltiptext">카메라</span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 그림판 - PEN -->
+                                <!-- <button class="camera-button" id="camera" onclick="toggleCamera()" > -->
+                                <!-- <button id="toggleDrawCanvasButton" class="buttonactive" onclick="changeColor()">그리기</button>
+                                    
+                                     <button id="clearCanvasButton">지우기</button>
+                                     <input id="color" type="color" />
+                                     <input id="line-width" type="range" min="1" max="10" value="5" step="0.5" /> -->
+                                <div class="footer-mid-layout-button-header">
+                                    <div class="footer-mid-layout-button-body">
+                                        <div class="footer-mid-layout-button-detail">
+                                            <span>
+                                                <button
+                                                    id="toggleDrawCanvasButton"
+                                                    class="canvas-pen-button"
+                                                    onclick="toggleCanvasButton()"
+                                                >
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        height="20"
+                                                        viewBox="0 -960 960 960"
+                                                        width="20"
+                                                    >
+                                                        <g transform="translate(60,0)">
+                                                            <path
+                                                                d="M560-120q-12 0-21-9t-9-21q0-13 9-21.5t21-8.5q59 0 99.5-24t40.5-56q0-23-29.5-45T591-339l47-47q63 19 92.5 52.5T760-260q0 67-61 103.5T560-120ZM240-414q-64-14-92-44t-28-62q0-35 26-63t120-62q66-24 85-39t19-35q0-25-22-43t-68-18q-27 0-46 7t-34 22q-8 8-20.5 9.5T157-748q-11-8-11.5-20t7.5-21q17-22 51-36.5t76-14.5q68 0 109 32.5t41 88.5q0 41-28.5 69.5T290-590q-67 25-88.5 39.5T180-520q0 16 27 30.5t81 27.5l-48 48Zm496-154L608-696l45-45q18-18 40-18t40 18l48 48q18 18 18 40t-18 40l-45 45ZM220-180h42l345-345-42-42-345 345v42Zm-60 60v-128l405-405 128 128-405 405H160Zm405-447 42 42-42-42Z"
+                                                            />
+                                                        </g>
+                                                    </svg>
+                                                    <span class="tooltiptext">그림판</span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Add skeleton -->
+                                <div class="footer-mid-layout-button-header">
+                                    <div class="footer-mid-layout-button-body">
+                                        <div class="footer-mid-layout-button-detail">
+                                            <span>
+                                                <button id="skeleton-dropdown-button" class="toggleAddSkeletonbutton">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        height="24"
+                                                        viewBox="0 -960 960 960"
+                                                        width="24"
+                                                    >
+                                                        <path
+                                                            d="M394-80q-16-47-24-92.5t-10-86q-2-40.5-.5-74.5t4.5-58q-1 0 0 0-22-5-50.5-12.5t-61-20.5Q220-437 186-455.5T119-500l50-70q39 35 81.5 55.5t78.5 32q36 11.5 60 15l24 3.5q18 1 28.5 15t7.5 32l-4.5 33.5q-4.5 33.5-5 83.5t7.5 109q8 59 33 111h-86Zm366 0h-80v-423q0-48-25.5-87T586-649L313-772l49-67 257 117q64 29 102.5 88T760-503v423ZM540-201q9 0 17-4t13-10q6 6 14 10t16 4q17 0 28.5-11.5T640-241q0-17-11.5-28.5T600-281v-159q17 0 28.5-11.5T640-480q0-17-11.5-28.5T600-520q-8 0-16 3.5t-14 9.5q-5-6-13-9.5t-17-3.5q-17 0-28.5 11.5T500-480q0 17 11.5 28.5T540-440v159q-17 0-28.5 11.5T500-241q0 17 11.5 28.5T540-201ZM480-80q-25-52-33-111t-7.5-109q.5-50 5-83.5L449-417q3-18-7.5-32T413-464l-24-3.5q-24-3.5-60-15t-78.5-32Q208-535 169-570q39 35 81.5 55.5t78.5 32q36 11.5 60 15l24 3.5q18 1 28.5 15t7.5 32l-4.5 33.5q-4.5 33.5-5 83.5t7.5 109q8 59 33 111Z"
+                                                        />
+                                                    </svg>
+                                                    <span class="tooltiptext">스켈레톤</span>
+                                                </button>
+                                                <div id="skeleton-dropdown-content">
+                                                    <button id="addSkeletonButton" class="AddSkeletonBtn">
+                                                        <span class="addSkeleton">1</span>
+                                                        <span class="tooltiptext">Add Skeleton1</span>
+                                                    </button>
+                                                    <button id="addSkeletonButton2" class="AddSkeletonBtn">
+                                                        <span class="addSkeleton">2</span>
+                                                        <span class="tooltiptext">Add Skeleton2</span>
+                                                    </button>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Impact -->
+                                <div class="footer-mid-layout-button-header">
+                                    <div class="footer-mid-layout-button-body">
+                                        <div class="footer-mid-layout-button-detail">
+                                            <span>
+                                                <button id="impact-dropdown-button" class="toggleImpactTimebutton">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        height="24"
+                                                        viewBox="0 -960 960 960"
+                                                        width="24"
+                                                    >
+                                                        <path
+                                                            d="M480-260q75 0 127.5-52.5T660-440q0-75-52.5-127.5T480-620q-75 0-127.5 52.5T300-440q0 75 52.5 127.5T480-260Zm0-80q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM160-120q-33 0-56.5-23.5T80-200v-480q0-33 23.5-56.5T160-760h126l74-80h240l74 80h126q33 0 56.5 23.5T880-680v480q0 33-23.5 56.5T800-120H160Zm0-80h640v-480H638l-73-80H395l-73 80H160v480Zm320-240Z"
+                                                        />
+                                                    </svg>
+                                                    <span class="ImpactTooltiptext">임팩트</span>
+                                                </button>
+                                                <div id="impact-dropdown-content">
+                                                    <button id="impactTime1" class="impactTimeBtn">
+                                                        <span class="impact">1</span>
+                                                        <span class="tooltiptext">Impact 1</span>
+                                                    </button>
+                                                    <button id="impactTime2" class="impactTimeBtn">
+                                                        <span class="impact">2</span>
+                                                        <span class="tooltiptext">Impact 2</span>
+                                                    </button>
+                                                    <button id="impactTime3" class="impactTimeBtn">
+                                                        <span class="impact">3</span>
+                                                        <span class="tooltiptext">Impact 3</span>
+                                                    </button>
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Impact Reset -->
+                                <div class="footer-mid-layout-button-header">
+                                    <div class="footer-mid-layout-button-body">
+                                        <div class="footer-mid-layout-button-detail">
+                                            <button id="impactTimeReset" class="impactTimeReset">
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    height="24"
+                                                    viewBox="0 -960 960 960"
+                                                    width="24"
+                                                >
+                                                    <path
+                                                        d="M480-280q-73 0-127.5-45.5T284-440h62q13 44 49.5 72t84.5 28q58 0 99-41t41-99q0-58-41-99t-99-41q-29 0-54 10.5T382-580h58v60H280v-160h60v57q27-26 63-41.5t77-15.5q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM180-120q-24 0-42-18t-18-42v-172h60v172h172v60H180Zm428 0v-60h172v-172h60v172q0 24-18 42t-42 18H608ZM120-608v-172q0-24 18-42t42-18h172v60H180v172h-60Zm660 0v-172H608v-60h172q24 0 42 18t18 42v172h-60Z"
+                                                    />
+                                                </svg>
+                                                <span class="tooltiptext">임팩트 타임 리셋</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Similarity -->
+                                <div class="footer-mid-layout-button-header">
+                                    <div class="footer-mid-layout-button-body">
+                                        <div class="footer-mid-layout-button-detail">
+                                            <span>
+                                                <button
+                                                    id="measureSimilarity"
+                                                    class="canvas-pen-button"
+                                                    onclick="showAlert()"
+                                                >
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        height="24"
+                                                        viewBox="0 -960 960 960"
+                                                        width="24"
+                                                    >
+                                                        <path
+                                                            d="M400-720q-33 0-56.5-23.5T320-800q0-33 23.5-56.5T400-880q33 0 56.5 23.5T480-800q0 33-23.5 56.5T400-720Zm260 480q42 0 71-29t29-71q0-42-29-71t-71-29q-42 0-71 29t-29 71q0 42 29 71t71 29ZM864-80 756-188q-22 14-46 21t-50 7q-75 0-127.5-52.5T480-340q0-75 52.5-127.5T660-520q75 0 127.5 52.5T840-340q0 26-7 50t-21 46l108 108-56 56Zm-424 0v-121q15 24 35.5 44t44.5 36v41h-80Zm-160 0v-520q-61-5-121-14.5T40-640l20-80q84 23 168.5 31.5T400-680q87 0 171.5-8.5T740-720l20 80q-59 16-119 25.5T520-600v41q-54 35-87 92.5T400-340v10q0 5 1 10h-41v240h-80Z"
+                                                        />
+                                                    </svg>
+                                                    <span class="tooltiptext">유사도</span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Exit -->
+                                <div class="footer-mid-layout-button-header">
+                                    <div class="footer-mid-layout-button-body">
+                                        <div class="footer-mid-layout-button-detail">
+                                            <span>
+                                                <button id="exit" class="exit-button">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        height="33"
+                                                        viewBox="0 -960 960 960"
+                                                        width="33"
+                                                    >
+                                                        <path
+                                                            d="m136-304-92-90q-12-12-12-28t12-28q88-95 203-142.5T480-640q118 0 232.5 47.5T916-450q12 12 12 28t-12 28l-92 90q-11 11-25.5 12t-26.5-8l-116-88q-8-6-12-14t-4-18v-114q-38-12-78-19t-82-7q-42 0-82 7t-78 19v114q0 10-4 18t-12 14l-116 88q-12 9-26.5 8T136-304Zm104-198q-29 15-56 34.5T128-424l40 40 72-56v-62Zm480 2v60l72 56 40-38q-29-26-56-45t-56-33Zm-480-2Zm480 2Z"
+                                                        />
+                                                    </svg>
+                                                    <span class="tooltiptext">나가기</span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- div -->
+                            </div>
+                        </div>
+                        <!-- right -->
+                        <div class="footer-right-layout-header">
+                            <div class="footer-right-layout-body">
+                                <div class="footer-right-chat-button-head">
+                                    <button
+                                        id="ToggleChat"
+                                        class="chat-button"
+                                        data-disable-idom="true"
+                                        aria-label="모든 사용자와 채팅"
+                                    >
+                                        <!-- onclick="handleToggleChat()" -->
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            height="48"
+                                            viewBox="0 -960 960 960"
+                                            width="48"
+                                        >
+                                            <path
+                                                d="M250.001-409.385h294.921v-45.384H250.001v45.384Zm0-127.308h459.998v-45.383H250.001v45.383Zm0-127.307h459.998v-45.384H250.001V-664Zm-150 545.536v-683.842q0-23.529 17.082-40.611 17.082-17.082 40.611-17.082h644.612q23.529 0 40.611 17.082 17.082 17.082 17.082 40.611v484.612q0 23.529-17.082 40.611-17.082 17.082-40.611 17.082H241.539L100.001-118.464Zm121.692-186.921h580.613q4.616 0 8.463-3.846 3.846-3.847 3.846-8.463v-484.612q0-4.616-3.846-8.463-3.847-3.846-8.463-3.846H157.694q-4.616 0-8.463 3.846-3.846 3.847-3.846 8.463v577.69l76.308-80.769Zm-76.308 0v-509.23V-305.385Z"
+                                            />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- 자바스크립트 -->
+            <script src="/socket.io/socket.io.js"></script>
+            <script
+                src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.1/camera_utils.js"
+                crossorigin="anonymous"
+            ></script>
+            <script
+                src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.js"
+                crossorigin="anonymous"
+            ></script>
+            <script
+                src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.2/drawing_utils.js"
+                crossorigin="anonymous"
+            ></script>
+            <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.2/pose.js" crossorigin="anonymous"></script>
+            <script src="./src/video/videochat.js"></script>
+            <script src="./src/chat/chat.js"></script>
+            <script src="./src/skeleton-image/pose.js"></script>
+            <script src="./src/skeleton-impactpoint/impactpoint.js"></script>
+            <script src="./src/video/videosync.js"></script>
+            <script src="./src/fileupload/fileupload.js"></script>
+            <script src="./src/whiteboard/whiteboard.js"></script>
+            <script src="./src/skeleton-similarity/similarity.js"></script>
+            <script src="./src/action/action.js"></script>
+            <script src="./src/action/action2.js"></script>
+            <script src="./src/action/action3.js"></script>
+            <script src="./src/toolbar/toolbar.js"></script>
+            <script src="./src/toolbar/SkeletonButton.js"></script>
+            <script src="./src/action/action_webcam.js"></script>
+            <script src="./src/enterroom/enterroom.js"></script>
+            <!-- <script>
+                // script.js
+                const enterSound = document.getElementById('enterSound');
+                const exitSound = document.getElementById('exitSound');
+
+                // 상대방이 입장했을 때 효과음 재생
+                function playEnterSound() {
+                    enterSound.currentTime = 0; // 재생 위치를 처음으로 되돌림
+                    enterSound.play();
+                }
+
+                // 상대방이 퇴장했을 때 효과음 재생
+                function playExitSound() {
+                    exitSound.currentTime = 0; // 재생 위치를 처음으로 되돌림
+                    exitSound.play();
+                }
+
+                // 상대방 입장 및 퇴장 시 효과음 재생
+                // 이 함수를 호출하면 효과음이 재생됩니다.
+                function handleUserEnter() {
+                    playEnterSound();
+                }
+
+                function handleUserExit() {
+                    playExitSound();
+                }
+
+                // 예시: 상대방 입장 버튼을 클릭했을 때
+                const enterButton = document.getElementById('enterButton');
+                enterButton.addEventListener('click', handleUserEnter);
+
+                // 예시: 상대방 퇴장 버튼을 클릭했을 때
+                const exitButton = document.getElementById('exitButton');
+                exitButton.addEventListener('click', handleUserExit);
+            </script> -->
+        </div>
+    </body>
 </html>
-
-<!-- 추가해야하는 것들 -->

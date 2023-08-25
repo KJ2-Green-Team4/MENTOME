@@ -35,8 +35,11 @@ const PostCard = (props) => {
                         </div>
                     </div>
                     <div className={styles.card__bottom}>
+                        {/* eslint-disable-next-line */}
                         <a className={styles.card__name}>{props.nickname}</a>
-                        <dd className={styles.card__career}>{props.career}년차</dd>
+                        <dd className={styles.card__career}>
+                            {props.career}년차
+                        </dd>
                     </div>
                 </section>
             </Link>

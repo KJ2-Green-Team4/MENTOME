@@ -46,7 +46,7 @@
     -webkit-box-pack: justify;
     line-height: 1.5;
     font-size: 17px;
-    font-weight: 700;
+    font-weight: 600;
     color: #3baf83;
 }
 
@@ -54,6 +54,13 @@
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.alert__span_p {
+    position: relative;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #05d183;
 }
 
 .alert_button {
@@ -166,4 +173,6 @@
 
 .form_submit {
     width: 100%;
+    margin-top: 35px;
+    margin-bottom: 70px;
 }

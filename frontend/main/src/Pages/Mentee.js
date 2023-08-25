@@ -1,7 +1,7 @@
 // 멘티 게시판
 import { Container, Row } from 'react-bootstrap';
 import Header from '../Components/Home/Header/Header';
-import MentoringWrappers from '../Components/Home/MentoringWrappers/Mentee/MentoringWrapper';
+import MentoringWrappers from '../Components/Home/MentoringWrappers/MenteeCard';
 import styles from './Mentee.module.css';
 
 function Mentee() {
@@ -9,12 +9,12 @@ function Mentee() {
         <>
             <Header />
             <Container>
-                <Row>
-                    <div className={styles.margin}>
-                        <h1 className={styles.font__mentee}>멘티게시판</h1>
+                <div className={styles.margin}>
+                    <h1 className={styles.font__mentee}>멘티게시판</h1>
+                    <Row>
                         <MentoringWrappers />
-                    </div>
-                </Row>
+                    </Row>
+                </div>
             </Container>
         </>
     );
